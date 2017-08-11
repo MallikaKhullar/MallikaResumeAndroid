@@ -1,4 +1,4 @@
-package com.example.mallikapriyakhullar.resumeapp.Data;
+package com.example.mallikapriyakhullar.resumeapp.Model;
 
 /**
  * Created by mallikapriyakhullar on 12/08/17.
