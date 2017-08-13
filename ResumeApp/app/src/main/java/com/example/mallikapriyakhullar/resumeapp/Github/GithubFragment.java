@@ -23,15 +23,21 @@ import butterknife.ButterKnife;
 /**
  * Created by mallikapriyakhullar on 12/08/17.
  */
-public class GithubFragment extends Fragment {
+public class GithubFragment extends Fragment implements GithubContract.View {
 
     private static final int ITEM_COUNT = 20;
+    private GithubPresenter mPresenter;
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+
+    public GithubFragment() {
+        this.mPresenter = new GithubPresenter();
+    }
 
     public static GithubFragment newInstance() {
         return new GithubFragment();
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,6 +62,11 @@ public class GithubFragment extends Fragment {
         mRecyclerView.addItemDecoration(new MaterialViewPagerHeaderDecorator());
 
         //set the adapter
-        mRecyclerView.setAdapter(new GithubProjectAdapter(projects));
+        mRecyclerView.setAdapter(new GithubProjectAdapter(mPresenter, projects));
+    }
+
+    @Override
+    public void openCommitPage(GithubProject project) {
+        //TODO: open the activity for commits
     }
 }

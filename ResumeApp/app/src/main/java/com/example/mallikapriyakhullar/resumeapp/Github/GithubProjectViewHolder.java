@@ -16,9 +16,11 @@ public class GithubProjectViewHolder extends RecyclerView.ViewHolder{
     public TextView name;
     public TextView ownerName;
     public TextView description;
+    public View mainView;
 
     public GithubProjectViewHolder(View itemView, TextView name, TextView ownerName, TextView description) {
         super(itemView);
+        this.mainView = itemView;
         this.name = name;
         this.ownerName = ownerName;
         this.description = description;
@@ -26,6 +28,7 @@ public class GithubProjectViewHolder extends RecyclerView.ViewHolder{
 
     public GithubProjectViewHolder(View itemView) {
         super(itemView);
+        //TODO: implement butterknife
 //        ownerName = (TextView)itemView.findViewById(R.id.owner_name);
 //        name = (TextView)itemView.findViewById(R.id.name);
 //        description = (TextView)itemView.findViewById(R.id.description);

@@ -19,8 +19,10 @@ import java.util.List;
 
 public class GithubProjectAdapter extends RecyclerView.Adapter<GithubProjectViewHolder>{
     private List<GithubProject> projects;
-    public GithubProjectAdapter(List<GithubProject> projects) {
+    private GithubPresenter mPresenter;
+    public GithubProjectAdapter(GithubPresenter presenter, List<GithubProject> projects) {
         this.projects = projects;
+        this.mPresenter = presenter;
     }
     @Override
     public GithubProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -29,11 +31,17 @@ public class GithubProjectAdapter extends RecyclerView.Adapter<GithubProjectView
     }
     @Override
     public void onBindViewHolder(GithubProjectViewHolder holder, int position) {
-        GithubProject project = projects.get(position);
+        final GithubProject project = projects.get(position);
         holder.name.setText(project.getName());
         holder.description.setText(project.getDescription());
         holder.ownerName.setText(project.getOwnerName());
         //on click
+        holder.mainView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.projectClicked(project);
+            }
+        });
     }
     @Override
     public int getItemCount() {
