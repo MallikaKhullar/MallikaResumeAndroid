@@ -18,15 +18,13 @@ import java.util.List;
 
 
 public class GithubProjectAdapter extends RecyclerView.Adapter<GithubProjectViewHolder>{
-    private Context context;
     private List<GithubProject> projects;
-    public GithubProjectAdapter(Context context, List<GithubProject> projects) {
-        this.context = context;
+    public GithubProjectAdapter(List<GithubProject> projects) {
         this.projects = projects;
     }
     @Override
     public GithubProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_githubproject, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_githubproject, parent, false);
         return new GithubProjectViewHolder(view);
     }
     @Override
